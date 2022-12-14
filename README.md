@@ -15,12 +15,31 @@
 * 레스트 템플릿 (RestTemplate & Configuration)
 * 외부 OMDB API (영화검색 API)
 
+<br />
+<br />
+
 # 시작하기
 
+
+<br />
+<br />
 ### 프로젝트 생성
 해당프로젝트는 [스프링공식](https://start.spring.io/) 사이트에서 생성이 가능하다.
 현재 로컬 IDE 환경이 인텔리제이고, 사이트에서 프로젝트 생성 후 Import 하였다.
 초기에 Spring Boot버전과 Gradle 버전이 상이한 부분이 있었다. build.gradle 참고
+
+<br />
+<br />
+
+# 지향점
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 # 지양점
 ### Lombok - @Data
@@ -28,7 +47,7 @@
 @RequiredArgsConstructor을 하나로 사용이 가능한 막강한 어노테이션이다.
 그러므로 무분별한 Setter 남용을 불러일으킬 수 있고, 그런 남용은 의도가 분명하지 않고 객체의 상태를 
 언제든 변경할 수 있기 때문에 객체의 안전성을 보장받기 힘들다.
-
+<br />
 
 # 참고
 #### 콘솔 컬러
