@@ -1,5 +1,5 @@
-# 개요
 
+# 개요
 현재 SI개발팀에서 SI수행을 담당하고 있어 기본적인 프로젝트 세트가 필요하여 개발하게 되었다.
 
 아래 기재된 기능을 구현할 것이고, 기본적인 API서버의 아주 기본적인 구색을 갖출 예정이다.
@@ -24,7 +24,6 @@
 초기에 Spring버전과 Gradle 버전이 상이한 부분이 있었다. build.gradle 참고
 
 # 지양점
-
 ### Lombok - @Data
 * @ToString, @Getter, @Setter, @EqualsAndHashCode, 
 @RequiredArgsConstructor을 하나로 사용이 가능한 막강한 어노테이션이이다.
@@ -34,6 +33,16 @@
 
 # 참고
 #### 콘솔 컬러
-VM Options에서 -Dspring.output.ansi.enabled=ALWAYS 를 추가해주면
+Configuration창에서 인자로 VM Options에서 -Dspring.output.ansi.enabled=ALWAYS 를 추가해주면 콘솔 
+텍스들이 컬러가 먹여지는 것을 확인 할 수 있다.
 
+
+
+
+
+
+
+
+
+##### Written By Gook
 
