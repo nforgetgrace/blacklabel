@@ -5,17 +5,16 @@
 아래 기재된 기능을 구현할 것이고, 기본적인 API서버의 아주 기본적인 구색을 갖출 예정이다.
 
 ### Spec
-* 자바 11(Zulu)
+* 자바 11(Zulu) & 그래들(Gradle)
 * 롬복(Lombok)
-* 그래들(Gradle)
 * 권한(Spring Security)
 * AOP(Logging)
 * slf4j MDC(Mapped Diagnostic Context) 쓰레드 별 로그 분리
-* 공통예외처리 (GlobalException)
+* 공통예외처리 (GlobalException 런타임 익셉션 처리 TODO: 비지니스 로직에서의 에러처리)
 * 필터 (Filter)
 * RestTemplate (RestTemplate & Configuration)
 * 외부 OMDB API (영화검색 API)
- 
+
 <br />
 
 # 시작하기
@@ -60,8 +59,11 @@ Configuration창에서 인자로 VM Options에서 -Dspring.output.ansi.enabled=A
 @ControllerAdvice <br />
 @Exceptionhandler <br />
 
+#### OMDB API KEY
 
-
+    OMDB_API_KEY='ae898d58'
+    상세: `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}&plot=full`
+    목록: `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${payload.title}&type=${payload.type}&y=${payload.year}&page=${payload.page}`
 
 
 ##### Written By Gook
