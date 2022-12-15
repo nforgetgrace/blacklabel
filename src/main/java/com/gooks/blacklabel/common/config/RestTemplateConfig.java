@@ -24,7 +24,6 @@ import java.util.concurrent.TimeUnit;
 **/
 @Configuration
 public class RestTemplateConfig {
-
     @Bean
     public RestTemplate restTemplate(final RestTemplateBuilder builder) {
         CloseableHttpClient httpClient = HttpClientBuilder.create()
@@ -38,7 +37,7 @@ public class RestTemplateConfig {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setHttpClient(httpClient);
 
-        // Todo 차후 로깅을 위해 버퍼링 사용
+        //TODO: RestTemplate 로깅처리
         BufferingClientHttpRequestFactory bufferingClientHttpRequestFactory = new BufferingClientHttpRequestFactory(factory);
 
         return builder

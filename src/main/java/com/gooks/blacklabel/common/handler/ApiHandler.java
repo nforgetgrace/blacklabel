@@ -1,5 +1,7 @@
 package com.gooks.blacklabel.common.handler;
 
+import org.springframework.stereotype.Component;
+
 /**
 * @package : com.gooks.blacklabel.common.handler
 * @name : ApiHandler.java
@@ -9,6 +11,8 @@ package com.gooks.blacklabel.common.handler;
 * @modifyed :
 * @description : 외부연동 API를 처리하는 핸들러
 **/
+@Component
 public class ApiHandler {
+
 
 }

@@ -248,6 +248,7 @@ public class GlobalExceptionHandler {
     class ErrorResponse {
         private String code;
         private String message;
+        //클라에서 사용할 메시지
         private String clientMessage;
         private List<String> detail;
 
@@ -259,7 +260,8 @@ public class GlobalExceptionHandler {
             this.code = "FAILED";
             this.message = ec.getMessage();
             this.detail = detail;
-            this.clientMessage = "해당 요청을 처리하는 중에 오류가 발생하였습니다.";
+            //클라언트메시지는 클라이언트에서 사용할 필드인데... 점점점
+            this.clientMessage = "해당 요청을 처리하는 중에 오류가 발생하였습니다."; 
         }
 
         public ErrorResponse(ErrorCode ec, List<String> detail, String clientMessage) {

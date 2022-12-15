@@ -14,7 +14,8 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 * @modifyed :
 * @description : 샘플프로젝트
 **/
-@EnableCommonApiResponse // 공통 응답 형식 사용
+// 공통 응답 형식을 사용한다면 "@EnableCommonApiResponse" 어노테이션을 활용하고 아니면 뺀다. 빼면 그냥 응답나감.
+@EnableCommonApiResponse
 @ConfigurationPropertiesScan
 @SpringBootApplication
 public class BlacklabelApplication {

@@ -3,8 +3,13 @@ package com.gooks.blacklabel.api.domain.movie.service.impl;
 import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
 import com.gooks.blacklabel.api.domain.movie.service.MovieService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +32,18 @@ public class MovieServiceImpl implements MovieService {
         log.info("title : {}, type : {}, year : {}, page : {}", title, type, year, page);
         List<MovieDto.Response> rtn = new ArrayList<>();
 
+    /*
+        try {
+            URL url = new URL("dddd",);
+            ResponseEntity<Object> response =new RestTemplate().getForEntity(url + "/board/{id}", Object.class, 3);
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+
+        //ResponseEntity<Object> response = new RestTemplate().postForEntity(url, request, Object.class);
+
+
+     */
         rtn.add(MovieDto.Response.builder()
                 .title("겨울왕국")
                 .page("1")

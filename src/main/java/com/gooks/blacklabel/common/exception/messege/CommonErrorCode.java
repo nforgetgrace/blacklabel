@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus;
 **/
 @Getter
 @AllArgsConstructor
-public enum CommonErrorCode implements ErrorCode{ //ErrorCode 구지 인터페이스를 하지 않아도 될 것으로 보임.
+public enum CommonErrorCode implements ErrorCode{
 
     UNHANDLED_ERROR("COMMON_000", "서비스 오류가 발생했습니다. 서버관리자에게 문의해 주세요.", HttpStatus.INTERNAL_SERVER_ERROR),
     INVALID_REQUEST("COMMON_001", "정상적인 요청이 아닙니다."),
