@@ -4,9 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
+/**
+* @package : com.gooks.blacklabel.common.exception.messege
+* @name : CommonErrorCode.java
+* @date : 2022-12-14 오후 4:16
+* @author : Jung Jae gook
+* @version : 1.0.0
+* @modifyed :
+* @description : 공통 에러응답 메시지
+**/
 @Getter
 @AllArgsConstructor
-public enum CommonErrorCode implements ErrorCode{
+public enum CommonErrorCode implements ErrorCode{ //ErrorCode 구지 인터페이스를 하지 않아도 될 것으로 보임.
+
     UNHANDLED_ERROR("COMMON_000", "서비스 오류가 발생했습니다. 서버관리자에게 문의해 주세요.", HttpStatus.INTERNAL_SERVER_ERROR),
     INVALID_REQUEST("COMMON_001", "정상적인 요청이 아닙니다."),
     INVALID_REQUEST_PARAM("COMMON_002", "요청 파라미터가 존재하지 않거나, 정확하지 않습니다. 파라미터를 확인해 주세요."),

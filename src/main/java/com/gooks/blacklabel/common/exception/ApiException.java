@@ -12,9 +12,6 @@ import java.util.List;
 @Getter
 public class ApiException extends RuntimeException {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     private final ErrorCode errorCode;
     private final List<String> detail;

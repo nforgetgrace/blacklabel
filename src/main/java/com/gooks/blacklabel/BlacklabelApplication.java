@@ -1,7 +1,9 @@
 package com.gooks.blacklabel;
 
+import com.gooks.blacklabel.common.aop.custom.annotation.EnableCommonApiResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 /**
 * @package : com.gooks.blacklabel.blacklabel
@@ -12,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 * @modifyed :
 * @description : 샘플프로젝트
 **/
+@EnableCommonApiResponse // 공통 응답 형식 사용
+@ConfigurationPropertiesScan
 @SpringBootApplication
 public class BlacklabelApplication {
 

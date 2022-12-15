@@ -1,7 +1,8 @@
-package com.gooks.blacklabel.api.popup.movie.controller;
+package com.gooks.blacklabel.api.domain.movie.controller;
 
-import com.gooks.blacklabel.api.popup.movie.dto.UserDto;
-import com.gooks.blacklabel.api.popup.movie.service.MovieService;
+import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
+import com.gooks.blacklabel.api.domain.movie.dto.UserDto;
+import com.gooks.blacklabel.api.domain.movie.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.rest.core.annotation.Description;
@@ -26,20 +27,18 @@ import java.util.List;
 public class MovieController {
 
     private final MovieService movieService;
-
     @GetMapping("/get")
     @Description("테스트 get 함수")
     public String get(@RequestParam String name){
-        log.info("param : {}", name);
         return name;
     }
 
     @GetMapping("/search/movie")
-    @Description("영화를 검색한다. ")
-    public List<Object> movieSearch(@RequestParam String title,
-                                    @RequestParam String year,
-                                    @RequestParam String type,
-                                    @RequestParam String page){
+    @Description("영화를 검색한다.")
+    public List<MovieDto.Response> movieSearch(@RequestParam String title,
+                                               @RequestParam String year,
+                                               @RequestParam String type,
+                                               @RequestParam String page){
 
         return movieService.searchMovieList(title, year, type, page);
     }
@@ -47,7 +46,6 @@ public class MovieController {
     @PostMapping("/post")
     @Description("테스트 post 함수")
     public UserDto post(@RequestBody UserDto param){
-        log.info("param : {}", param);
         return param;
     }
 }

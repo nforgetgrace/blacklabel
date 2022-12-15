@@ -9,13 +9,13 @@
 * 롬복(Lombok)
 * 그래들(Gradle)
 * 권한(Spring Security)
-* 횡단관심 AOP(Logging)
+* AOP(Logging)
+* slf4j MDC(Mapped Diagnostic Context) 쓰레드 별 로그 분리
 * 공통예외처리 (GlobalException)
-* 요청가공 (Filter)
-* 레스트 템플릿 (RestTemplate & Configuration)
+* 필터 (Filter)
+* RestTemplate (RestTemplate & Configuration)
 * 외부 OMDB API (영화검색 API)
-
-<br />
+ 
 <br />
 
 # 시작하기
@@ -53,10 +53,12 @@
 #### 콘솔 컬러
 Configuration창에서 인자로 VM Options에서 -Dspring.output.ansi.enabled=ALWAYS 를 추가해주면 콘솔 
 텍스들이 컬러가 먹여지는 것을 확인 할 수 있다.
-
 인텔리제이를 처음에 설치했을때 자신에 맞는 설정들이 필요하다. Code Assistant, 자동저장기능, 코드수정 시 자동서버 재기동 등등...
 
-
+#### 공통예외 및 응답처리
+@RestControllerAdvice <br />
+@ControllerAdvice <br />
+@Exceptionhandler <br />
 
 
 

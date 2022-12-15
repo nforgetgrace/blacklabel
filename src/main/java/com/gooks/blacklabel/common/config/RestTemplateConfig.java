@@ -13,6 +13,15 @@ import org.springframework.web.client.RestTemplate;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+/**
+* @package : com.gooks.blacklabel.common.config
+* @name : RestTemplateConfig.java
+* @date : 2022-12-14 오후 4:15
+* @author : Jung Jae gook
+* @version : 1.0.0
+* @modifyed :
+* @description : RestTemplate 연결 설정
+**/
 @Configuration
 public class RestTemplateConfig {
 

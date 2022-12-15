@@ -1,4 +1,6 @@
-package com.gooks.blacklabel.api.popup.movie.service;
+package com.gooks.blacklabel.api.domain.movie.service;
+
+import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
 
 import java.util.List;
 
@@ -12,5 +14,5 @@ import java.util.List;
 * @description :
 **/
 public interface MovieService {
-    List<Object> searchMovieList(String title, String type, String year, String page);
+    List<MovieDto.Response> searchMovieList(String title, String type, String year, String page);
 }
