@@ -6,3 +6,10 @@ spring:
     remote:
       restart:
         enabled: true
+
+info:
+  module-name: blacklabel-api
+  log-file-name: app.log
+
+# logging
+logging.config: classpath:logging/logback-local.xml

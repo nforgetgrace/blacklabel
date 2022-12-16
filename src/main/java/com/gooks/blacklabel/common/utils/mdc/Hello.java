@@ -1,12 +1,21 @@
-package com.gooks.blacklabel.common.utils.biz;
+package com.gooks.blacklabel.common.utils.mdc;
 
 import org.slf4j.MDC;
 
-public final class ApiName {
+/**
+* @package : com.gooks.blacklabel.common.utils.mdc
+* @name : Hello.java
+* @date : 2022-12-16 오후 2:13
+* @author : Jung Jae gook
+* @version : 1.0.0
+* @modifyed :
+* @description : MDC 로깅용
+**/
+public final class Hello {
 
-    protected static final String HEADER_API_NAME = "apiName";
+    protected static final String HEADER_API_NAME = "hello";
 
-    private ApiName() {
+    private Hello() {
     }
 
     public static String getApiName() {

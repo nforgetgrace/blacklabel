@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gooks.blacklabel.common.exception.messege.CommonErrorCode;
 import com.gooks.blacklabel.common.exception.messege.ErrorCode;
-import com.gooks.blacklabel.common.utils.biz.LogKey;
+import com.gooks.blacklabel.common.utils.mdc.LogKey;
 import lombok.Getter;
 
 import javax.servlet.http.HttpServletRequest;

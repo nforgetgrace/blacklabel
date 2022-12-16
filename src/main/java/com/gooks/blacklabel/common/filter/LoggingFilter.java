@@ -1,8 +1,9 @@
 package com.gooks.blacklabel.common.filter;
 
 
-import com.gooks.blacklabel.common.utils.biz.ApiName;
-import com.gooks.blacklabel.common.utils.biz.LogKey;
+import com.gooks.blacklabel.common.utils.mdc.ApiName;
+import com.gooks.blacklabel.common.utils.mdc.Hello;
+import com.gooks.blacklabel.common.utils.mdc.LogKey;
 import lombok.extern.slf4j.Slf4j;
 
 import org.slf4j.MDC;
@@ -28,16 +29,23 @@ public class LoggingFilter implements Filter {
         log.info("[LoggingFilter] doFilter method");
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
+        //chain.doFilter(req, res);
 
+
+        //MDC 쓰레드로컬에 추가하고 싶으면 여기에 추가하고 반드시 filter에서 나갈때는
+        // remove 필수 나중에 쓰레드 다른 요청이 사용할 경우 데이터 혼합을 방지하기 위함
         addXForwardedFor(request);
         addLogKey(request);
+        addHello(request);
         addApiName(request);
 
         chain.doFilter(req, res);
 
         removeXForwardedFor();
         removeLogKey();
+        removeHello();
         removeApiName();
+
     }
 
     private void addXForwardedFor(final HttpServletRequest request) {
@@ -54,6 +62,10 @@ public class LoggingFilter implements Filter {
 
     private void addLogKey(final HttpServletRequest request) {
         LogKey.put(getLogKey(request));
+    }
+
+    private void addHello(final HttpServletRequest request) {
+        Hello.put("hi nice to meet you");
     }
 
     private void addApiName(final HttpServletRequest request) {
@@ -79,6 +91,9 @@ public class LoggingFilter implements Filter {
 
     private void removeLogKey() {
         LogKey.remove();
+    }
+    private void removeHello() {
+        Hello.remove();
     }
     private void removeApiName() {
         ApiName.remove();

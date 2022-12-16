@@ -1,4 +1,4 @@
-package com.gooks.blacklabel.common.utils.biz;
+package com.gooks.blacklabel.common.utils.mdc;
 
 import org.slf4j.MDC;
 
@@ -11,7 +11,7 @@ import java.util.UUID;
 * @author : Jung Jae gook
 * @version : 1.0.0
 * @modifyed :
-* @description : 로그키 관리 클래스
+* @description : MDC 로그키 관리 클래스
 **/
 public final class LogKey {
 

@@ -13,8 +13,8 @@ import java.lang.annotation.Target;
 * @version : 1.0.0
 * @modifyed :
 * @description : 공통 응답 사용 설정용 SpringBootApplication 에 설정하면 동작
-* @see HntApiResponse
-* @see HntResponseBodyAdvice
+* @see CommonApiResponse
+* @see CommonResponseBodyAdvice
 **/
 
 @Target(ElementType.TYPE)

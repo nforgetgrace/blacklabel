@@ -89,7 +89,7 @@ public class CustomObjectMapper {
     }
 
     /**
-     * <pre> HntObjectMapper.writeValueAsMaskString </pre>
+     * <pre> gooksObjectMapper.writeValueAsMaskString </pre>
      * @param object
      * @리턴타입 String
      * @설명 client req/res 로깅에 사용함, objectMapper 객체가 분리되어야 해서(instrospector 적용) 생성자 호출처리했음.

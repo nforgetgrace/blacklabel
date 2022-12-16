@@ -1,8 +1,7 @@
 package com.gooks.blacklabel.common.aop;
 
-import com.gooks.blacklabel.common.aop.custom.annotation.MaskLogs;
 import com.gooks.blacklabel.common.utils.CustomObjectMapper;
-import com.gooks.blacklabel.common.utils.biz.LogKey;
+import com.gooks.blacklabel.common.utils.mdc.LogKey;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;

@@ -3,7 +3,7 @@ package com.gooks.blacklabel.common.response.dto;
 import java.time.LocalDate;
 
 import com.gooks.blacklabel.api.common.utils.DateTimeUtils;
-import com.gooks.blacklabel.common.utils.biz.LogKey;
+import com.gooks.blacklabel.common.utils.mdc.LogKey;
 
 import lombok.Getter;
 
