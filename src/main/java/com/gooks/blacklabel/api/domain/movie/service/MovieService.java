@@ -1,6 +1,7 @@
-package com.gooks.blacklabel.common.aop.api.domain.movie.service;
+package com.gooks.blacklabel.api.domain.movie.service;
 
-import com.gooks.blacklabel.common.aop.api.domain.movie.dto.MovieDto;
+import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ import java.util.List;
 * @description :
 **/
 public interface MovieService {
-    List<MovieDto.Response> searchMovieList(String title, String type, String year, String page);
+    ResponseEntity<Object> searchMovieList(String title, String type, String year, String page);
 }

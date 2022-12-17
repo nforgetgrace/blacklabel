@@ -1,4 +1,4 @@
-package com.gooks.blacklabel.common.aop.api.common.utils;
+package com.gooks.blacklabel.api.common.utils;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

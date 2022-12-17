@@ -1,4 +1,4 @@
-package com.gooks.blacklabel.common.handler;
+package com.gooks.blacklabel.common.response.handler;
 
 import com.gooks.blacklabel.common.utils.CustomObjectMapper;
 import lombok.AllArgsConstructor;

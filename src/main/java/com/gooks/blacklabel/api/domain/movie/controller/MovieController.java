@@ -1,11 +1,12 @@
-package com.gooks.blacklabel.common.aop.api.domain.movie.controller;
+package com.gooks.blacklabel.api.domain.movie.controller;
 
-import com.gooks.blacklabel.common.aop.api.domain.movie.dto.MovieDto;
-import com.gooks.blacklabel.common.aop.api.domain.movie.dto.UserDto;
-import com.gooks.blacklabel.common.aop.api.domain.movie.service.MovieService;
+import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
+import com.gooks.blacklabel.api.domain.movie.dto.UserDto;
+import com.gooks.blacklabel.api.domain.movie.service.MovieService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.rest.core.annotation.Description;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,10 +36,10 @@ public class MovieController {
 
     @GetMapping("/search/movie")
     @Description("영화를 검색한다.")
-    public List<MovieDto.Response> movieSearch(@RequestParam String title,
-                                               @RequestParam String year,
-                                               @RequestParam String type,
-                                               @RequestParam String page){
+    public ResponseEntity<Object> movieSearch(@RequestParam String title,
+                                              @RequestParam String year,
+                                              @RequestParam String type,
+                                              @RequestParam String page){
 
         return movieService.searchMovieList(title, year, type, page);
     }

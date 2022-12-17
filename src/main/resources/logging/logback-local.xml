@@ -4,11 +4,11 @@
     <property name="LOG_PATH" value="/${APP_NAME}/logs"/>
 
     <!-- properties -->
-    <include resource="logging/gooks-logback-properties.xml"/>
+    <include resource="logging/logback-properties.xml"/>
 
     <!-- appender -->
-    <include resource="logging/gooks-logback-console-appender.xml"/>
-    <include resource="logging/gooks-logback-json-file-appender.xml"/>
+    <include resource="logging/logback-console-appender.xml"/>
+    <include resource="logging/logback-json-file-appender.xml"/>
 
     <!-- logger -->
     <logger name="com.gooks" level="DEBUG"/>

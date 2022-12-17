@@ -1,10 +1,15 @@
-package com.gooks.blacklabel.common.aop.api.domain.movie.service.impl;
+package com.gooks.blacklabel.api.domain.movie.service.impl;
 
-import com.gooks.blacklabel.common.aop.api.domain.movie.dto.MovieDto;
-import com.gooks.blacklabel.common.aop.api.domain.movie.service.MovieService;
+import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
+import com.gooks.blacklabel.api.domain.movie.service.MovieService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,28 +28,30 @@ import java.util.List;
 public class MovieServiceImpl implements MovieService {
 
     @Override
-    public List<MovieDto.Response> searchMovieList(String title, String type, String year, String page) {
+    public ResponseEntity<Object> searchMovieList(String title, String type, String year, String page) {
         log.info("title : {}, type : {}, year : {}, page : {}", title, type, year, page);
         List<MovieDto.Response> rtn = new ArrayList<>();
+        ResponseEntity<Object> response = null;
 
-    /*
         try {
-            URL url = new URL("dddd",);
-            ResponseEntity<Object> response =new RestTemplate().getForEntity(url + "/board/{id}", Object.class, 3);
-        } catch (URISyntaxException e) {
+            URL url = new URL("https://www.omdbapi.com/?apikey=ae898d58&s=frozen&type=movie&y=2019&page=1");
+            response =new RestTemplate().getForEntity(url + "/board/{id}", Object.class, 3);
+            log.info("MOVIE response", response);
+        } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
 
         //ResponseEntity<Object> response = new RestTemplate().postForEntity(url, request, Object.class);
 
 
-     */
+        /*
         rtn.add(MovieDto.Response.builder()
                 .title("겨울왕국")
                 .page("1")
                 .type("영화")
                 .year("2019")
                 .build());
-        return rtn;
+        */
+        return response;
     }
 }
