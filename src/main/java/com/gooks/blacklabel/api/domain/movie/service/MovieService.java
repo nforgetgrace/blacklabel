@@ -1,6 +1,6 @@
-package com.gooks.blacklabel.api.domain.movie.service;
+package com.gooks.blacklabel.common.aop.api.domain.movie.service;
 
-import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
+import com.gooks.blacklabel.common.aop.api.domain.movie.dto.MovieDto;
 
 import java.util.List;
 

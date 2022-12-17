@@ -1,15 +1,10 @@
-package com.gooks.blacklabel.api.domain.movie.service.impl;
+package com.gooks.blacklabel.common.aop.api.domain.movie.service.impl;
 
-import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
-import com.gooks.blacklabel.api.domain.movie.service.MovieService;
+import com.gooks.blacklabel.common.aop.api.domain.movie.dto.MovieDto;
+import com.gooks.blacklabel.common.aop.api.domain.movie.service.MovieService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

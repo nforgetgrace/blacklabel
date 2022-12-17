@@ -1,4 +1,4 @@
-package com.gooks.blacklabel.api.domain.movie.dto;
+package com.gooks.blacklabel.common.aop.api.domain.movie.dto;
 
 import lombok.*;
 
