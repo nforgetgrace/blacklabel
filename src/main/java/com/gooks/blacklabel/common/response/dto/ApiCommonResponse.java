@@ -14,11 +14,11 @@ import lombok.Getter;
 * @author : Jung Jae gook
 * @version : 1.0.0
 * @modifyed :
-* @description : 공통응답 DTO
+* @description : 공통응답 객체 data안에는 API메시지
 **/
 
 @Getter
-public final class ApiResponse {
+public final class ApiCommonResponse {
     /**/
     private String logKey;
 
@@ -26,9 +26,9 @@ public final class ApiResponse {
 
     private String serverDt;
 
-    public ApiResponse(Object data) {
+    public ApiCommonResponse(Object data) {
         this.logKey = LogKey.get();
-        this.data = data;
+        this.data = data; //API
         this.serverDt = DateTimeUtils.formatHyphen(LocalDate.now());
     }
 }

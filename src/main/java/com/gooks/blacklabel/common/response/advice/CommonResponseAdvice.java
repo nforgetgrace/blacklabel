@@ -2,7 +2,7 @@ package com.gooks.blacklabel.common.response.advice;
 
 import com.gooks.blacklabel.common.aop.custom.annotation.EnableCommonApiResponse;
 import com.gooks.blacklabel.common.response.CommonResponseNoUesList;
-import com.gooks.blacklabel.common.response.dto.ApiResponse;
+import com.gooks.blacklabel.common.response.dto.ApiCommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.core.MethodParameter;
@@ -28,15 +28,18 @@ import org.apache.commons.lang3.EnumUtils;
 @Slf4j
 @RestControllerAdvice
 @ConditionalOnBean(annotation = EnableCommonApiResponse.class)
-public class ResponseAdvice implements ResponseBodyAdvice {
+public class CommonResponseAdvice implements ResponseBodyAdvice {
 
+    //공통응답을 사용할지 말지 결정 후 불리언값을 리턴 --> beforeBodyWrite 함수에서 공통 리스폰드 바디로 써지고 외부로 리턴
     @Override
     public boolean supports(final MethodParameter returnType, final Class converterType) {
         log.info("[ResponseAdvice] supports method");
         String methodName = returnType.getMethod().getName();
 
-        //공통 응답템플릿을 사용하지않는 경우 ResponseBodyNoneUse에 정의
-        if(EnumUtils.isValidEnum(CommonResponseNoUesList.class, methodName ) ) { //사용하지않는 메소드명 일치
+        //공통 응답을 사용하지 않는 경우 ResponseBodyNoneUse에 정의
+
+        //CommonResponseNoUesList 로 정의 된 Enum 값에 isValidEnum 함수를 돌려 해당 메소드가 있다면 사용하지 않는 것으로 판단해서 False 반환
+        if(EnumUtils.isValidEnum(CommonResponseNoUesList.class, methodName ) ) {
 
             if(CommonResponseNoUesList.valueOf(methodName).getClassName().equals(returnType.getDeclaringClass().getSimpleName())) { //사용하지않는 클래스명 일치
                 return false;
@@ -48,6 +51,6 @@ public class ResponseAdvice implements ResponseBodyAdvice {
     @Override
     public Object beforeBodyWrite(final Object body, final MethodParameter returnType, final MediaType selectedContentType, final Class selectedConverterType, final ServerHttpRequest request, final ServerHttpResponse response) {
         log.info("[ResponseAdvice] beforeBodyWrite method");
-        return new ApiResponse(body);
+        return new ApiCommonResponse(body);
     }
 }
