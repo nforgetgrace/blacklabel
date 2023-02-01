@@ -34,24 +34,15 @@ public class MovieServiceImpl implements MovieService {
         ResponseEntity<Object> response = null;
 
         try {
-            URL url = new URL("https://www.omdbapi.com/?apikey=ae898d58&s=frozen&type=movie&y=2019&page=1");
+            URL url = new URL("htt://www.omdbapi.com/?apikey=ae898d58&s=frozen&type=movie&y=2019&page=1");
             response =new RestTemplate().getForEntity(url + "/board/{id}", Object.class, 3);
             log.info("MOVIE response", response);
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
         //ResponseEntity<Object> response = new RestTemplate().postForEntity(url, request, Object.class);
 
-
-        /*
-        rtn.add(MovieDto.Response.builder()
-                .title("겨울왕국")
-                .page("1")
-                .type("영화")
-                .year("2019")
-                .build());
-        */
         return response;
     }
 }

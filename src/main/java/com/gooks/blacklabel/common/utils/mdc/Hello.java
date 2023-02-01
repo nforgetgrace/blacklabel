@@ -9,7 +9,7 @@ import org.slf4j.MDC;
 * @author : Jung Jae gook
 * @version : 1.0.0
 * @modifyed :
-* @description : MDC 로깅용
+* @description : MDC 로깅시 MDC에 추가할 샘플 파일
 **/
 public final class Hello {
 

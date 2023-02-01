@@ -10,11 +10,28 @@ import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.util.ContentCachingRequestWrapper;
+import org.springframework.web.util.ContentCachingResponseWrapper;
+import org.springframework.web.util.WebUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+* @package : com.gooks.blacklabel.common.filter
+* @name : LoggingFilter.java
+* @date : 2023-01-27 오전 9:39
+* @author : Jung Jae gook
+* @version : 1.0.0
+* @modifyed :
+* @description : 로깅필터는 최종적으로
+**/
 
 @Slf4j
 @Component
@@ -26,7 +43,6 @@ public class LoggingFilter implements Filter {
 
     @Override
     public void doFilter(final ServletRequest req, final ServletResponse res, final FilterChain chain) throws IOException, ServletException {
-        log.info("[LoggingFilter] doFilter method");
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         //chain.doFilter(req, res);
@@ -74,6 +90,7 @@ public class LoggingFilter implements Filter {
 
     private String getLogKey(final HttpServletRequest request) {
         String logKey = request.getHeader(LogKey.getLogKeyName());
+        // 로그키가 없을 경우 생성해서
         if (!StringUtils.hasLength(logKey)) {
             logKey = LogKey.createLogKey();
         }
@@ -99,4 +116,124 @@ public class LoggingFilter implements Filter {
         ApiName.remove();
     }
 
+
+    private Map<String, Object> getHeaders(HttpServletRequest request) {
+        Map<String, Object> headerMap = new HashMap<>();
+
+        Enumeration<String> headerArray = request.getHeaderNames();
+        while (headerArray.hasMoreElements()) {
+            String headerName = headerArray.nextElement();
+            headerMap.put(headerName, request.getHeader(headerName));
+        }
+        return headerMap;
+    }
+
+    private String getRequestBody(ContentCachingRequestWrapper request) {
+        ContentCachingRequestWrapper wrapper = WebUtils.getNativeRequest(request, ContentCachingRequestWrapper.class);
+        if (wrapper != null) {
+            byte[] buf = wrapper.getContentAsByteArray();
+            if (buf.length > 0) {
+                try {
+                    return new String(buf, 0, buf.length, wrapper.getCharacterEncoding());
+                } catch (UnsupportedEncodingException e) {
+                    return " - ";
+                }
+            }
+        }
+        return " - ";
+    }
+
+    private String getResponseBody(final HttpServletResponse response) throws IOException {
+        String payload = null;
+        ContentCachingResponseWrapper wrapper = WebUtils.getNativeResponse(response, ContentCachingResponseWrapper.class);
+        if (wrapper != null) {
+            wrapper.setCharacterEncoding("UTF-8");
+            byte[] buf = wrapper.getContentAsByteArray();
+            if (buf.length > 0) {
+                payload = new String(buf, 0, buf.length, wrapper.getCharacterEncoding());
+                wrapper.copyBodyToResponse();
+            }
+        }
+        return null == payload ? " - " : payload;
+    }
 }
+
+
+/*
+* @Component
+public class LoggingFilter implements Filter {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+            throws IOException, ServletException {
+
+        if (servletRequest instanceof HttpServletRequest && servletResponse instanceof HttpServletResponse) {
+            HttpServletRequest request = (HttpServletRequest) servletRequest;
+            HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+            HttpServletRequest requestToCache = new ContentCachingRequestWrapper(request);
+            HttpServletResponse responseToCache = new ContentCachingResponseWrapper(response);
+
+            chain.doFilter(requestToCache, responseToCache);
+
+            logger.info("request header: {}", getHeaders(requestToCache));
+            logger.info("request body: {}", getRequestBody((ContentCachingRequestWrapper) requestToCache));
+            logger.info("response body: {}", getResponseBody(responseToCache));
+
+        } else {
+            chain.doFilter(servletRequest, servletResponse);
+        }
+    }
+
+    private Map<String, Object> getHeaders(HttpServletRequest request) {
+        Map<String, Object> headerMap = new HashMap<>();
+
+        Enumeration<String> headerArray = request.getHeaderNames();
+        while (headerArray.hasMoreElements()) {
+            String headerName = headerArray.nextElement();
+            headerMap.put(headerName, request.getHeader(headerName));
+        }
+        return headerMap;
+    }
+
+    private String getRequestBody(ContentCachingRequestWrapper request) {
+        ContentCachingRequestWrapper wrapper = WebUtils.getNativeRequest(request, ContentCachingRequestWrapper.class);
+        if (wrapper != null) {
+            byte[] buf = wrapper.getContentAsByteArray();
+            if (buf.length > 0) {
+                try {
+                    return new String(buf, 0, buf.length, wrapper.getCharacterEncoding());
+                } catch (UnsupportedEncodingException e) {
+                    return " - ";
+                }
+            }
+        }
+        return " - ";
+    }
+
+    private String getResponseBody(final HttpServletResponse response) throws IOException {
+        String payload = null;
+        ContentCachingResponseWrapper wrapper = WebUtils.getNativeResponse(response, ContentCachingResponseWrapper.class);
+        if (wrapper != null) {
+            wrapper.setCharacterEncoding("UTF-8");
+            byte[] buf = wrapper.getContentAsByteArray();
+            if (buf.length > 0) {
+                payload = new String(buf, 0, buf.length, wrapper.getCharacterEncoding());
+                wrapper.copyBodyToResponse();
+            }
+        }
+        return null == payload ? " - " : payload;
+    }
+}
+
+
+/*
+2022-03-01 01:37:04.049  INFO 16344 --- [nio-8080-exec-6] com.example.api.filter.LoggingFilter     : request header: {content-length=51, postman-token=d4e2bfa4-1...
+2022-03-01 01:37:04.050  INFO 16344 --- [nio-8080-exec-6] com.example.api.filter.LoggingFilter     : request body: {
+    "param1": "test1",
+    "param2": "test2"
+}
+2022-03-01 01:37:04.051  INFO 16344 --- [nio-8080-exec-6] com.example.api.filter.LoggingFilter     : response body: {"res1":"test1","res2":"test2","res3":"test3"}
+*/

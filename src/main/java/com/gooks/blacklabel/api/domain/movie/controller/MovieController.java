@@ -1,5 +1,7 @@
 package com.gooks.blacklabel.api.domain.movie.controller;
 
+import com.google.gson.Gson;
+import com.gooks.blacklabel.api.domain.movie.dto.Foo;
 import com.gooks.blacklabel.api.domain.movie.dto.MovieDto;
 import com.gooks.blacklabel.api.domain.movie.dto.UserDto;
 import com.gooks.blacklabel.api.domain.movie.service.MovieService;
@@ -31,6 +33,15 @@ public class MovieController {
     @GetMapping("/get")
     @Description("테스트 get 함수")
     public String get(@RequestParam String name){
+
+        String input = "{\n" +
+                "   \"name\" : \"Test\",\n" +
+                "   \"runtime\" : \"08\"\n" +
+                "}";
+
+        Gson gson = new Gson();
+        Foo foo = gson.fromJson(input, Foo.class);
+        log.info("Foo", foo);
         return name;
     }
 

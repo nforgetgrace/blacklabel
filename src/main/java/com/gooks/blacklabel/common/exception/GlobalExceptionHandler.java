@@ -47,6 +47,8 @@ import java.util.stream.Collectors;
 * @version : 1.0.0
 * @modifyed :
 * @description : 전역 에러처리 핸들러
+ * 부가 설명 @RestControllerAdvice = Controller 전역에서 발생하는 익셉션을 처리하고 응답처리
+ * @ExceptionHandler 는 메소드 단위의 익셉션을 처리 
 **/
 
 @Slf4j(topic = "GLOBAL_EXCEPTION_HANDLER")
@@ -73,6 +75,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleException(Exception e) {
         return buildResponse(e, CommonErrorCode.UNHANDLED_ERROR, e.getMessage());
     }
+
 
     /**
      * request body 필드 검증 에러 처리 (MethodValidationInterceptor 에서 발생)

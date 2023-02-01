@@ -21,6 +21,7 @@ import org.apache.commons.lang3.EnumUtils;
 * @version : 1.0.0
 * @modifyed :
 * @description : @RestControllerAdvice를 활용하여 Resp Body를 처리할 수 있다.
+* 공통응답을 처리하기 위해 공통 body값을 만든다.
 * ResponseBodyAdvice를 사용하기 위해서 supports와 beforeBodyWrite을 오버라이딩
 * support에서 Controller작업이 끝난 response beforeBodyWrite로 보낼 것인지 판단
 * supports로 판단해서 들어온 body를 활용 사용자가 원하는 작업을 수행
